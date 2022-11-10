@@ -2,10 +2,12 @@ const express=require("express");
 const mongoose=require("mongoose")
 const router=require('./routes/user-routes')
 const cookieParser=require("cookie-parser")
+const cors=require('cors')
 // express giving its refrance to app variable and app variable holds functionality within application
 const app=express();
 
 // middleware
+app.use(cors())
 app.use(cookieParser());
 app.use(express.json())
 app.use('/api',router)
