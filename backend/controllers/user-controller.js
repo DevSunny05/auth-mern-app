@@ -59,6 +59,7 @@ const login= async(req,res,next)=>{
     const token=jwt.sign({id:existingUser._id},JWT_SECRET_KEY,{
         expiresIn:'24hr'
     })
+    console.log(token)
 
     res.cookie(String(existingUser._id),token,{
         path:'/',
@@ -66,6 +67,7 @@ const login= async(req,res,next)=>{
         httpOnly:true,
         sameSite:'lax'
     })
+    
 
     return res.status(200).json({message:"successfully login in",user:existingUser,token})
 }
